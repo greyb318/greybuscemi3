@@ -8,12 +8,16 @@ body {
     margin: 0;
     background: #000;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Prevent bounce on iOS */
 }
 
 .scene-container {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height for mobile */
     overflow: hidden;
 }
 
@@ -49,6 +53,7 @@ video, #storefrontImage {
     user-select: none;
     background: #000;
     max-height: 100vh;
+    max-height: 100dvh; /* Use dynamic viewport height for mobile */
 }
 
 /* Hide all video controls */
@@ -75,6 +80,8 @@ video::-webkit-media-controls-closed-captions-button {
     cursor: pointer;
     transition: opacity 0.3s ease;
     z-index: 10;
+    touch-action: manipulation; /* Improve touch handling */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
 }
 
 .jewelry-btn:hover {
@@ -85,42 +92,82 @@ video::-webkit-media-controls-closed-captions-button {
 #piece1 {
     top: 50%;
     left: 30%;
-    width: 150px;
-    height: 150px;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+    height: 20vmin;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 #piece2 {
     top: 55%;
     left: 45%;
-    width: 150px;
-    height: 150px;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+    height: 20vmin;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 #piece3 {
     top: 50%;
     left: 60%;
-    width: 150px;
-    height: 150px;
+    transform: translate(-50%, -50%);
+    width: 20vmin;
+    height: 20vmin;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 .back-button {
     position: absolute;
-    bottom: 30px;
+    bottom: max(20px, 4vh);
     left: 50%;
     transform: translateX(-50%);
-    padding: 15px 30px;
+    padding: clamp(10px, 3vh, 15px) clamp(20px, 6vw, 30px);
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vh, 16px);
     cursor: pointer;
     border-radius: 30px;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
     z-index: 10;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .back-button:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .jewelry-btn {
+        width: 15vmin;
+        height: 15vmin;
+    }
+    
+    #piece1 {
+        top: 45%;
+        left: 25%;
+    }
+    
+    #piece2 {
+        top: 50%;
+        left: 50%;
+    }
+    
+    #piece3 {
+        top: 45%;
+        left: 75%;
+    }
 } 
