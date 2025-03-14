@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Photo Experience</title>
+    <title>Virtual Jewelry Storefront</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="landing-page">
-            <img src="website2title.jpg" alt="Landing Photo" id="landingPhoto">
-            <div class="polygon-buttons">
-                <button class="polygon-btn" id="btn1"></button>
-                <button class="polygon-btn" id="btn2"></button>
-                <button class="polygon-btn" id="btn3"></button>
-            </div>
+    <div class="scene-container">
+        <!-- Main storefront view -->
+        <div class="view-wrapper" id="mainView">
+            <img src="website2title.jpg" alt="Storefront" id="storefrontImage">
+            <!-- Invisible buttons over each jewelry piece -->
+            <button class="jewelry-btn" id="piece1"></button>
+            <button class="jewelry-btn" id="piece2"></button>
+            <button class="jewelry-btn" id="piece3"></button>
         </div>
-        <div class="video-container" id="videoContainer">
-            <video id="videoPlayer" controls>
+
+        <!-- Individual jewelry views -->
+        <div class="video-wrapper" id="jewelryView">
+            <video id="jewelryVideo" muted playsinline>
                 <source src="" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <button id="backButton" class="back-button">Back to Photo</button>
+            <button id="backButton" class="back-button">Return to Storefront</button>
         </div>
     </div>
     <script src="script.js"></script>
